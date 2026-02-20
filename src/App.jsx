@@ -17,7 +17,7 @@ export default function App() {
         });
       }
     );
-  }, []);
+  });
 
   useEffect(() => {
     const getCurrentWeather = async (location) => {
