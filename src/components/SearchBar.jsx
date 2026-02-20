@@ -10,10 +10,11 @@ export const SearchBar = ({ onSearch }) => {
         inputRef.current?.focus();
     })
 
-    const handleSearchClick = (() => {
+    const handleSearchClick = () => {
         if (inputText === "") return;
         onSearch(inputText);
-    }, []);
+        setInputText("");
+    };
 
     return (
         <div>
