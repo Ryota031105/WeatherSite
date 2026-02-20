@@ -28,7 +28,7 @@ export const fetchWeather = async (address) => {
 };
 
 export const fetchWeatherByCoordinate = async (coordinate) => {
-    //const APIKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
+    const APIKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
     const locationName = "現在地"
 
