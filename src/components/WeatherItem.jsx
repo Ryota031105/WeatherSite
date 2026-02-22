@@ -1,4 +1,4 @@
-import styles from './weatherItem.module.css';
+import styles from './WeatherItem.module.css';
 
 export const WeatherItem = ({ weatherData, error }) => {
     const changeLan = (data) => {
