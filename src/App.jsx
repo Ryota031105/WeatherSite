@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { fetchWeather, fetchWeatherByCoordinate } from './lib/weatherApi';
+import { feachLocation, fetchWeather, fetchWeatherForecast } from './lib/weatherApi';
 import { SearchBar } from './components/SearchBar'; // 子コンポーネントを読み込む
+import { WeatherItem } from './components/WeatherItem';
 
 export default function App() {
   const [weatherData, setWeatherData] = useState(null);
+  const [forecastData, setForecastData] = useState(null);
   const [error, setError] = useState(null);
 
   const [location, setLocation] = useState({ lat: null, lng: null });
@@ -14,6 +16,7 @@ export default function App() {
         setLocation({
           lat: (Math.round(position.coords.latitude * 10000) / 10000),
           lng: (Math.round(position.coords.longitude * 10000) / 10000),
+          locationName: "現在地",
         });
       }
     );
@@ -22,7 +25,8 @@ export default function App() {
   useEffect(() => {
     const getCurrentWeather = async (location) => {
       try {
-        const data = await fetchWeatherByCoordinate(location);
+        const data = await fetchWeather(location);
+        const forecast = await fetchWeatherForecast(location);
         setWeatherData(data);
         setError(null);
       } catch (error) {
@@ -38,7 +42,8 @@ export default function App() {
   // 子に渡すための関数（APIを叩いてStateを更新するロジック）
   const getWeather = async (cityName) => {
     try {
-      const data = await fetchWeather(cityName);
+      const coordinate = await feachLocation(cityName);
+      const data = await fetchWeather(coordinate);
       setWeatherData(data);
       setError(null);
     } catch (error) {
@@ -48,20 +53,23 @@ export default function App() {
     }
   };
 
+  const getWeatherForecast = async (cityName) => {
+    try {
+      const coordinate = await feachLocation(cityName);
+      const data = await fetchWeatherForecast(coordinate);
+      setForecastData(data);
+      setError(null);
+    } catch (error) {
+      console.error("天気の取得に失敗しました", error);
+      setError("都市が見つかりませんでした");
+      setForecastData(null);
+    }
+  };
+
   return (
     <div>
-      <SearchBar onSearch={getWeather} />
-      {weatherData && <div>
-        <h2>{weatherData.displayLocation}の天気</h2>
-        <img
-          src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
-          alt="天気アイコン"
-        />
-        <p>状態: {weatherData.weather[0].main}</p>
-        <p>気温: {weatherData.main.temp} ℃</p>
-        <p>湿度: {weatherData.main.humidity} %</p>
-      </div>}
-      {error && <p>{error}</p>}
+      <SearchBar getWeather={getWeather} getWeatherForecast={getWeatherForecast} />
+      <WeatherItem weatherData={weatherData} error={error} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-export const SearchBar = ({ onSearch }) => {
+export const SearchBar = ({ getWeather, getWeatherForecast }) => {
 
     const [inputText, setInputText] = useState("");
 
@@ -12,7 +12,8 @@ export const SearchBar = ({ onSearch }) => {
 
     const handleSearchClick = () => {
         if (inputText === "") return;
-        onSearch(inputText);
+        getWeather(inputText);
+        getWeatherForecast(inputText);
         setInputText("");
     };
 
@@ -23,7 +24,7 @@ export const SearchBar = ({ onSearch }) => {
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                placeholder="都市名を入力 (例: Tokyo)"
+                placeholder="都市名を入力 (例: 東京都)"
             />
             <button onClick={() => handleSearchClick()}>検索</button>
         </div>
