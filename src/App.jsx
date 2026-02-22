@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { feachLocation, fetchWeather, fetchWeatherForecast } from './lib/weatherApi';
 import { SearchBar } from './components/SearchBar'; // 子コンポーネントを読み込む
 import { WeatherItem } from './components/WeatherItem';
+import { ForecastList } from './components/ForecastList';
 
 export default function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -28,6 +29,7 @@ export default function App() {
         const data = await fetchWeather(location);
         const forecast = await fetchWeatherForecast(location);
         setWeatherData(data);
+        setForecastData(forecast);
         setError(null);
       } catch (error) {
         console.error("天気の取得に失敗しました", error);
@@ -70,6 +72,10 @@ export default function App() {
     <div>
       <SearchBar getWeather={getWeather} getWeatherForecast={getWeatherForecast} />
       <WeatherItem weatherData={weatherData} error={error} />
+      {weatherData && <hr />}
+      {error && <>{error}</>}
+      {forecastData && <p>5日間天気予報</p>}
+      <ForecastList forecastData={forecastData} />
     </div>
   );
 }

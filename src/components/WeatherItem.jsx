@@ -1,6 +1,6 @@
 import styles from './WeatherItem.module.css';
 
-export const WeatherItem = ({ weatherData, error }) => {
+export const WeatherItem = ({ weatherData }) => {
     const changeLan = (data) => {
         switch (data) {
             case "Clear": return "晴れ";
@@ -13,16 +13,16 @@ export const WeatherItem = ({ weatherData, error }) => {
 
     return (
         <>
-            {weatherData && <div>
-                <p>{weatherData.displayLocation}</p>
-                <p>{weatherData.main.temp} ℃ | 湿度: {weatherData.main.humidity} %</p>
-                <img
-                    src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
-                    alt="天気アイコン"
-                />
-                <hr />
-            </div>}
-            {error && <p>{error}</p>}
+            <div className={styles.backItem}>
+                {weatherData && <div>
+                    <p>{weatherData.displayLocation}</p>
+                    <p>{weatherData.main.temp} ℃ | 湿度: {weatherData.main.humidity} %</p>
+                    <img
+                        src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+                        alt="天気アイコン"
+                    />
+                </div>}
+            </div>
         </>
     )
 }
