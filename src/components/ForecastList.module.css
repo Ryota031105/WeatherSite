@@ -40,3 +40,10 @@
     margin-left: 5px;
 
 }
+
+.innerContainer {
+    width: max-content;
+    /* 中身のサイズぴったりに幅を合わせる */
+    margin: 0 auto;
+    /* 画面の幅に余裕がある場合は中央に配置する */
+}
