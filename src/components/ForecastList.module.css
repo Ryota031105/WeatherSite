@@ -1,34 +1,22 @@
 .item {
     overflow-x: auto;
     white-space: nowrap;
+    width: 100%;
 }
 
 .time {
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 34px;
+    margin-right: 29px;
     width: 50px;
 }
 
 .timeAll {
     background-color: rgb(134, 134, 134);
     display: flex;
-    justify-content: center;
+    width: max-content;
+    /* margin: 0 auto; */
     align-items: center;
     border-radius: 8px;
-}
-
-.data {
-    background-color: rgb(134, 134, 134);
-    width: 100px;
-    margin: 0 auto;
-    border-radius: 8px;
-    justify-content: center;
-    align-items: center;
-}
-
-.fixedSize {
-    width: 50px;
-    height: 50px;
 }
 
 .test {
@@ -38,11 +26,17 @@
     margin-top: 5px;
     margin-bottom: 5px;
     display: flex;
-    justify-content: center;
+    width: max-content;
     align-items: center;
 }
 
 .dayFont {
-    margin-right: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+
+}
+
+.forecastFont {
+    margin-left: 5px;
 
 }

@@ -7,7 +7,7 @@ export const ForecastList = ({ forecastData }) => {
             <div className={styles.item}>
                 {forecastData && <>
                     <div className={styles.timeAll}>
-                        <span>予報</span>
+                        <span className={styles.forecastFont}>予報</span>
                         <span className={styles.time}>0</span>
                         <span className={styles.time}>3</span>
                         <span className={styles.time}>6</span>
