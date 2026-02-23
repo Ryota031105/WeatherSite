@@ -1,0 +1,48 @@
+.item {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.time {
+    margin-left: 30px;
+    margin-right: 30px;
+    width: 50px;
+}
+
+.timeAll {
+    background-color: rgb(134, 134, 134);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.data {
+    background-color: rgb(134, 134, 134);
+    width: 100px;
+    margin: 0 auto;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.fixedSize {
+    width: 50px;
+    height: 50px;
+}
+
+.test {
+    background-color: rgb(134, 134, 134);
+    display: flex;
+    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dayFont {
+    margin-right: 15px;
+
+}

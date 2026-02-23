@@ -74,7 +74,6 @@ export default function App() {
       <WeatherItem weatherData={weatherData} error={error} />
       {weatherData && <hr />}
       {error && <>{error}</>}
-      {forecastData && <p>5日間天気予報</p>}
       <ForecastList forecastData={forecastData} />
     </div>
   );

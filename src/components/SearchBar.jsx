@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import styles from "./SearchBar.module.css"
 
 export const SearchBar = ({ getWeather, getWeatherForecast }) => {
 
@@ -18,15 +19,16 @@ export const SearchBar = ({ getWeather, getWeatherForecast }) => {
     };
 
     return (
-        <div>
+        <div className={styles.search}>
             <input
+                className={styles.searchBar}
                 ref={inputRef}
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder="都市名を入力 (例: 東京都)"
             />
-            <button onClick={() => handleSearchClick()}>検索</button>
+            <button className={styles.searchButton} onClick={() => handleSearchClick()}>検索</button>
         </div>
     );
 }
